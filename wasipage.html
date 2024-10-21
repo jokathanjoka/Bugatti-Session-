@@ -1,130 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="shortcut icon" href="" type="image/x-icon">
-  <style>
-    body {
-      background-color: black;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      height: 100vh;
-      margin: 0;
-      color: white;
-    }
+  <head>
+    <meta charset="UTF-8">
+    <link rel="icon" href="/luffyicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Card-game</title>
+      <style>
+          
+             body {
 
-    {
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "url": "https://railway.app",
-            "logo": "https://telegra.ph/file/4cf337052c09eec06f3e8.jpg"
-    }
+                  background-image: url('/backgound.jpg');
+                  background-repeat: no-repeat;
+                  background-size: cover;
+                  background-position: center;
+                  min-height: 100vh;
+                  width: 100vw;
+             }
 
-    .button-container {
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+             .gamePanel {
 
-    h3 {
-      margin-top: -40px;
-      opacity: 0;
-      animation: fadeIn 3s forwards;
-    }
+                border-radius: 20px;
+                /* margin: 20px; */
+             }
 
-    .button {
-      width: 140px;
-      height: 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 0px 15px;
-      background-color: red;
-      border-radius: 10px;
-      border: none;
-      color: white;
-      position: relative;
-      cursor: pointer;
-      font-weight: 900;
-      transition-duration: .2s;
-      background: linear-gradient(0deg, #000, #272727);
-      text-decoration: none;
-    }
+             #cards {
 
-  
-    footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #222; /* Darker gray footer background */
-    color: #fff;
-    padding: 10px 0;
-    text-align: center;
-    font-size: 14px;
+                border: solid 2px ;
+                border-radius: 20px;
+                display: grid;
+                grid-template-columns: repeat(5,1fr);
+                gap: 20px;
+                padding: 10px;
+             }
+
+              #cards-normal {
+
+                border: solid 2px ;
+                border-radius: 20px;
+                display: grid;
+                grid-template-columns: repeat(6,1fr);
+                gap: 20px;
+                padding: 10px;
+              }
+
+              #cards-hard {
+
+                border: solid 2px ;
+                border-radius: 20px;
+                display: grid;
+                grid-template-columns: repeat(10,1fr);
+                gap: 20px;
+                padding: 10px;
+              }
+
+
+             .card {
+              display: block;
+              width: 45px;
+              height: 80px;
+              position : relative;
+              perspective: 100px;
+              perspective-origin: center center;
+              transform-style: preserve-3d;
+              transform: rotateY(180deg);
+              transition: all 0.6s;
+            }
+            .card .back {
+              position : absolute;
+              transform: rotateY(180deg);
+              height: 100%;
+              width: 100%;
+              -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+            }
+            .card .face {
+              position : absolute;
+              height: 100%;
+              width: 100%;
+              -webkit-backface-visibility: hidden;
+              backface-visibility: hidden;
+            }
+
+            .card.face_up {
+              transform: rotateY(0);
+            }
+
+            #music-btn > a {
+
+                text-decoration: none;
+                color: black;
+            }
+
+      </style>
+  </head>
+  <body class = "d-flex justify-content-center align-items-center">
+
+        <div class="gamePanel bg-white py-4 px-3 my-5">
+
+                <h1 class="text-primary fw-bold text-center"> Card-game By FaouzKK</h1>
+                <div id ="game-content" class=" pt-4 pb-3"> 
+                                 
+                </div>
+
+        </div>
     
-  }
-    .button:before, .button:after {
-      content: '';
-      position: absolute;
-      left: -2px;
-      top: -2px;
-      border-radius: 10px;
-      background: linear-gradient(45deg, #48ff00, #15ff00, #000000,#000000, #ff0000);
-      background-size: 400%;
-      width: calc(100% + 4px);
-      height: calc(100% + 4px);
-      z-index: -1;
-      animation: steam 10s linear infinite;
-    }
-
-    @keyframes steam {
-      0% {
-        background-position: 0 0;
-      }
-
-      50% {
-        background-position: 400% 0;
-      }
-
-      100% {
-        background-position: 0 0;
-      }
-    }
-
-    .button:after {
-      filter: blur(50px);
-    }
-
-    .button span {
-      z-index: 1;
-    }
-
-    @keyframes fadeIn {
-      to {
-        opacity: 1;
-      }
-    }
-  </style>
-</head>
-<body>
-  <div class="button-container">
-    <h3>JOEL MD V5 SESSION SECTION</h3>
-    <div></div>
-    <a href="https://professional-kitty-goutammallick516-86803e18.koyeb.app/" class="button" target="_blank"> <span>PAIR CODE</span> </a> <br>
-    <a href="https://wa.me/+255714595078" class="button" target="_blank"> <span>OWNER</span> </a> <br>
-    <a href="https://github.com/joeljamestech/JOEL-MD/fork" class="button" target="_blank"> <span>FORK BOT</span> </a> <br>
-
-    <p>YOU HAVE ERROR CLICK ERROR BUTTON</p>
-
-    <a href="https://wa.me/+255714595078?text=HAVE_ERROR_𝙻𝚘𝚛𝚍 𝚓𝚘𝚎𝚕" class="button" target="_blank"> <span>ERROR</span> </a> <br>
-
-    <footer>
-      𝙻𝚘𝚛𝚍 𝚓𝚘𝚎𝚕 &copy; <span id="currentYear"></span>
-    </footer>
-  
-</body>
-	</html>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
