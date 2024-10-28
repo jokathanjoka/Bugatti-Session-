@@ -8,8 +8,8 @@ let server = require('./wasiqr'),
 require('events').EventEmitter.defaultMaxListeners = 500;
 app.use('/wasiqr', server);
 app.use('/code', code);
-app.use('/deploy.css',async (req, res, next) => {
-res.sendFile(__path + '/deploy.css')
+app.use('/style.css',async (req, res, next) => {
+res.sendFile(__path + '/style.css')
 })
 app.use('/',async (req, res, next) => {
 res.sendFile(__path + '/wasipage.html')
